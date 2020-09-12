@@ -60,4 +60,21 @@ mod tests {
             ),
         );
     }
+    #[test]
+    fn parse_binding_def2() {
+        assert_eq!(
+            BindingDef::new("let binding2 = 10 / 2"),
+            (
+                "",
+                BindingDef {
+                    name: "binding2".to_string(),
+                    val: Expr {
+                        lhs: Number(10),
+                        rhs: Number(2),
+                        op: Op::Div,
+                    },
+                },
+            ),
+        );
+    }
 }
