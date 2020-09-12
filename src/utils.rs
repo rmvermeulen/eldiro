@@ -82,3 +82,17 @@ mod test_whitespace {
         assert_eq!(extract_whitespace("    1"), ("1", "    "));
     }
 }
+
+pub(crate) fn extract_ident(s: &str) -> (&str, &str) {
+    take_while(|c| c.is_ascii_alphabetic(), s)
+}
+
+#[cfg(test)]
+mod test_ident {
+    use super::*;
+
+    #[test]
+    fn extract_alphabetic_ident() {
+        assert_eq!(extract_ident("abcdEFG stop"), (" stop", "abcdEFG"));
+    }
+}
