@@ -23,6 +23,8 @@ pub(crate) fn extract_op(s: &str) -> (&str, &str) {
 mod tests {
     use super::*;
 
+    // digits
+
     #[test]
     fn extract_one_digit() {
         assert_eq!(extract_digits("1+2"), ("+2", "1"));
@@ -39,5 +41,27 @@ mod tests {
     #[test]
     fn extract_digits_with_no_remainder() {
         assert_eq!(extract_digits("100"), ("", "100"));
+    }
+
+    // operators
+
+    #[test]
+    fn extract_plus() {
+        assert_eq!(extract_op("+2"), ("2", "+"));
+    }
+
+    #[test]
+    fn extract_minus() {
+        assert_eq!(extract_op("-10"), ("10", "-"));
+    }
+
+    #[test]
+    fn extract_star() {
+        assert_eq!(extract_op("*3"), ("3", "*"));
+    }
+
+    #[test]
+    fn extract_slash() {
+        assert_eq!(extract_op("/4"), ("4", "/"));
     }
 }
